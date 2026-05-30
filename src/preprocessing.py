@@ -1,7 +1,3 @@
-#TODO: preprocesing data functions 
-#TODO: wrapper functions for the preprocessing pipeline
-
-
 def preprocess_text(text):
     """
     Preprocesses text by removing non-ASCII characters, tokenizing, filtering stop words, 

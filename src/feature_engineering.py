@@ -1,7 +1,3 @@
-#TODO: preprocesing data functions 
-#TODO: wrapper functions for the feature engineering pipeline
-
-
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import OrdinalEncoder
@@ -176,3 +172,10 @@ def add_word_count_features(df, columns):
         df[f"{col}_word_count"] = df[col].apply(count_words)
 
     return df
+
+
+# scaling features
+scaler = MinMaxScaler()
+
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
