@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from src.data_pipeline import prepare_train_test_features
 from src.eval import *
 from src.config import *
-
+from src.model_selection import select_best_model
 
 def main():
     # load data
@@ -65,24 +65,6 @@ def main():
         output_path=REPORTS_DIR / "roc_curve_best_model.png",
         model_name=best_model_name
     )
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
