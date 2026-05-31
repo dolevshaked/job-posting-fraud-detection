@@ -14,6 +14,7 @@ TRAIN_PATH = RAW_DATA_DIR / "train.csv"
 TEST_PATH = RAW_DATA_DIR / "test.csv"
 TEST_LABELS_PATH = RAW_DATA_DIR / "test_labels.csv"
 
+REPORTS_DIR = BASE_DIR / "reports"
 
 #  cols 
 TEXT_COLUMNS = [
@@ -81,3 +82,4 @@ EDUCATION_MAP = {
     'doctorate': 7
 }
 
+PCA_COMPONENTS = 2

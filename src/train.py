@@ -54,3 +54,21 @@ test_df = add_word_count_features(test_df, TEXT_COLUMNS)
 train_df = drop_columns(train_df, TEXT_COLUMNS)
 test_df = drop_columns(test_df, TEXT_COLUMNS)
 
+# scale features
+scaler = fit_scaler(X_train)
+X_train_scaled = transform_with_scaler(X_train, scaler)
+X_test_scaled = transform_with_scaler(X_test, scaler)
+
+# feature selection
+selector = forward_feature_selection(X_train_scaled, y_train, random_state=RANDOM_STATE)
+
+X_train_selected = select_features(X_train_scaled, selector)
+X_test_selected = select_features(X_test_scaled, selector)
+
+# dimensionality reduction 
+pca = fit_pca(X_train=X_train_selected, n_components=PCA_COMPONENTS, random_state=RANDOM_STATE)
+X_train_pca = transform_with_pca(X_train_selected, pca)
+X_test_pca = transform_with_pca(X_test_selected, pca)
+# save PCA plots
+save_pca_plot_explained_variance(pca)
+save_pca_plot_loading_scores(pca=pca, feature_names=X_train_selected.columns, top_n=5, output_dir=REPORTS_DIR)
