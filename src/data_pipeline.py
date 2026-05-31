@@ -1,7 +1,7 @@
 from src.preprocessing import *
 from src.feature_engineering import *
 from src.config import *
-
+import pandas as pd
 
 def prepare_train_test_features(X_train, X_test, y_train):
     """
