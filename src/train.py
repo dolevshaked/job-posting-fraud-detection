@@ -2,21 +2,18 @@ from src.preprocessing import *
 from src.feature_engineering import *
 from src.config import *
 import pandas as pd
+from sklearn.model_selection import train_test_split
+
 
 # load data 
 train_df = pd.read_csv(TRAIN_PATH)
-test_df = pd.read_csv(TEST_PATH)
-test_labels = pd.read_csv(TEST_LABELS_PATH)
-
-# features, target split 
-y_train = train_df["fraudulent"]
-X_train = train_df.drop(columns=["fraudulent"])
-
-X_test = test_df.copy()
-y_test = test_labels["fraudulent"]
+X = train_df.drop(['fraudulent'], axis=1)
+y = train_df['fraudulent']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, stratify=y, random_state=1)
 
 # preprocess text 
-df = preprocess_text_columns(df, TEXT_PREPROCESS_COLUMNS)
+X_train = preprocess_text_columns(X_train, TEXT_PREPROCESS_COLUMNS)
+X_test = preprocess_text_columns(X_test, TEXT_PREPROCESS_COLUMNS)
 
 
 # drop cols with above 60% missing 
