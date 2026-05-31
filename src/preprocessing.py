@@ -1,3 +1,16 @@
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.ticker as mtick
+import nltk
+from nltk import word_tokenize, WordNetLemmatizer
+from nltk.corpus import stopwords
+from nltk.sentiment import SentimentIntensityAnalyzer
+import string
+import pandas as pd
+
+
+
 def preprocess_text(text):
     """
     Preprocesses text by removing non-ASCII characters, tokenizing, filtering stop words, 
